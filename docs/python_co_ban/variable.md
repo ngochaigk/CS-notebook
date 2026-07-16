@@ -39,7 +39,7 @@
 <aside>
 💡
 
-**Lưu ý:** Python đã định nghĩa sẵn khoảng các số nguyên từ [-5, 256].
+*Lưu ý:* Python đã định nghĩa sẵn khoảng các số nguyên từ [-5, 256].
 
 Nghĩa là: Khi một chương trình Python khởi động, tất cả các giá trị trong khoảng đó sẽ được tạo ra và lưu sẵn trong bộ nhớ. Khi chúng ta tạo một biến với giá trị trong khoảng đó, Python sẽ không cấp phát vùng mới nữa, mà chỉ đơn giản là lấy ra địa chỉ vùng nhớ đã có sẵn chứa giá trị tương ứng là được.
 
