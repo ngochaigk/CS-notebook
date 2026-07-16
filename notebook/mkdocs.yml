@@ -1,0 +1,37 @@
+site_name: Sổ tay của tôi
+site_url: https://TEN_GITHUB.github.io/so-tay/
+
+theme:
+  name: material
+  language: vi          # giao diện tiếng Việt
+  palette:
+    # nút chuyển sáng/tối
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Chuyển sang nền tối
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Chuyển sang nền sáng
+  features:
+    - navigation.instant   # chuyển trang mượt
+    - navigation.top       # nút cuộn lên đầu
+    - search.highlight     # tô đậm từ khóa tìm kiếm
+    - content.code.copy    # nút copy trong khối code
+
+markdown_extensions:
+  - admonition             # khối ghi chú đẹp (Note, Warning...)
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+nav:
+  - Trang chủ: index.md
+  - Python cơ bản:
+      - Biến và kiểu dữ liệu: python_co_ban/variable.md
+  - Toán cho CS:
+      - Softmax và Stable Softmax: math_for_cs/softmax.md
