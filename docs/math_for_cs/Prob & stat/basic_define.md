@@ -14,8 +14,8 @@
 | Biến cố / Sự kiện (Event) | Một tập hợp con của không gian mẫu, gồm một hoặc nhiều kết cục thỏa mãn một điều kiện nào đó. | A = "xuất hiện mặt chẵn" → A = {2, 4, 6} ⊂ Ω. | Chữ viết hoa (A, B, C,...)
 
 - Có 5 loại biến cố:
-    - Biến cố chắc chắn (U): luôn xảy ra, bằng cả không gian mẫu.
-    - Biến cố không thể (V): không bao giờ xảy ra.
+    - Biến cố chắc chắn (tập vũ trụ - U): luôn xảy ra, bằng cả không gian mẫu.
+    - Biến cố không thể (tập rỗng - V): không bao giờ xảy ra.
     - Biến cố đối lập: biến cố "không xảy ra A".
     - Biến cố xung khắc: 2 biến cố không thể đồng thời xảy ra, tức AB = V.
     - Biến cố ngẫu nhiên: có thể xảy ra hoặc không.
@@ -29,9 +29,9 @@
 
 ## Phép toán trong xác suất
 
-- Tổng 2 sự kiện: A + B => sự kiện xuất hiện ít nhất trong một trong hai sự kiện trên.
-- Tích 2 sự kiện: A.B => sự kiện xuất hiện đồng thời trong cả hai sự kiện trên.
-- Đối lập của sự kiện A là $\overline{A}$ => sự kiện không xuất hiện trong A.
+- Tổng 2 sự kiện: A + B => sự kiện xuất hiện ít nhất trong một trong hai sự kiện trên ($A \cap B$).
+- Tích 2 sự kiện: A.B => sự kiện xuất hiện đồng thời cả hai sự kiện trên ($A \cup B$).
+- Đối lập của sự kiện A là $\overline{A}$ => sự kiện không xuất hiện A.
 - Xung khắc: hai sự kiện A và B xung khắc khi chúng không thể đồng thời xảy ra, tức AB = V.
 - Kéo theo: sự kiện A dẫn tới sự kiện B (A=>B).
 - Tương đương: nếu xuất hiện A thì xuất hiện B và ngược lại (A=B).
@@ -44,9 +44,9 @@
 
 ## Các loại xác suất
 
-- Xác suất cổ điển: P(A) = số kết quả thuận lợi / tổng số kết quả có thể.
+- Xác suất cổ điển (Classical Probability): P(A) = số kết quả thuận lợi / tổng số kết quả có thể.
 
-- Xác suất hình học: dùng khi biến liên tục, tính theo tỉ lệ "độ đo miền".
+- Xác suất hình học (Geometric Probability): dùng khi biến liên tục, tính theo tỉ lệ "độ đo miền".
 
 Khi biến ngẫu nhiên là liên tục, tức có khả năng nhận vô số giá trị trong một khoảng nào đó, ta không thể đếm được số kết cục nữa => chuyển sang "đo". 
 
@@ -54,4 +54,4 @@ Khi biến ngẫu nhiên là liên tục, tức có khả năng nhận vô số 
 
 Giả sử trong hình trên, ta muốn tính xác suất một điểm trong hình chữ nhật ABCD thuộc tam giác con, thì sẽ lấy diện tích tam giác chia cho diện tích chữ nhật. 
 
-- Xác suất thực nghiệm: dựa trên số lần xảy ra thực tế/ tổng số lần thử. Càng thực nghiệm nhiều thì xác suất thực nghiệm càng gần xác suất cổ điển.
+- Xác suất thực nghiệm (Empirical Probability): dựa trên số lần xảy ra thực tế/ tổng số lần thử. Càng thực nghiệm nhiều thì xác suất thực nghiệm càng gần xác suất cổ điển.
