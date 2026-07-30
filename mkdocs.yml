@@ -48,6 +48,10 @@ nav:
       - Softmax và Stable Softmax: math_for_cs/softmax.md
       - Vector và Ma trận: math_for_cs/vector_matrix.md
       - Khoảng tin cậy: math_for_cs/confidence_interval.md
+      - Xác suất thống kê:
+          - Các khái niệm cơ bản: math_for_cs/prob_stat/basic_define.md
+          - Định lý Bayes: math_for_cs/prob_stat/bayes.md
+          - Phân phối Gauss: math_for_cs/prob_stat/gaussian.md
   - Thuật toán:
       - K-Means: algorithms/kmeans.md
       - K-Nearest Neighbors: algorithms/k_nearest_neighbors.md
