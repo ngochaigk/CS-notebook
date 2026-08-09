@@ -1,0 +1,1991 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://TEN_GITHUB.github.io/so-tay/python_library/numpy/">
+      
+      
+        <link rel="prev" href="../../math_for_cs/prob_stat/softmax/">
+      
+      
+        <link rel="next" href="../pandas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Numpy - Sổ tay của tôi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tong-hop-kien-thuc-ve-numpy" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../.." title="Sổ tay của tôi" class="md-header__button md-logo" aria-label="Sổ tay của tôi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sổ tay của tôi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Numpy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang nền tối"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang nền tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang nền sáng"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang nền sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sổ tay của tôi" class="md-nav__button md-logo" aria-label="Sổ tay của tôi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sổ tay của tôi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trang chủ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python cơ bản
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python cơ bản
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_co_ban/variable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Biến và kiểu dữ liệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_co_ban/function/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hàm trong Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_co_ban/branching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Câu lệnh rẽ nhánh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_co_ban/loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vòng lặp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_co_ban/data_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cấu trúc dữ liệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python_co_ban/oop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OOP trong Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toán cho CS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Toán cho CS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/softmax.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Softmax và Stable Softmax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/vector_matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector và Ma trận
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/confidence_interval.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Khoảng tin cậy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xác suất thống kê
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Xác suất thống kê
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/prob_stat/prob_basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xác suất cơ bản
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/prob_stat/stat_basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thống kê cơ bản
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/prob_stat/bayes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Định lý Bayes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/prob_stat/gaussian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phân phối Gauss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/prob_stat/confidence_interval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Khoảng tin cậy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_for_cs/prob_stat/softmax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hàm softmax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thuật toán
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Thuật toán
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/kmeans.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K-Means
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithms/k_nearest_neighbors.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K-Nearest Neighbors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thư viện trong Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Thư viện trong Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-gioi-thieu-ve-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Giới thiệu về NumPy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tao-mang-trong-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tạo mảng trong NumPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Tạo mảng trong NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-tu-gia-tri-cho-truoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Từ giá trị cho trước
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mang-ac-biet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Mảng đặc biệt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-mang-ngau-nhien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Mảng ngẫu nhiên
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lap-chi-muc-cat-lat-va-bien-oi-hinh-dang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Lập chỉ mục, Cắt lát và Biến đổi hình dạng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Lập chỉ mục, Cắt lát và Biến đổi hình dạng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-chi-muc-indexing-va-cat-lat-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Chỉ mục (Indexing) và Cắt lát (Slicing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-bien-oi-hinh-dang-reshaping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Biến đổi hình dạng (Reshaping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mat-na-boolean-va-loc-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Mặt nạ Boolean và Lọc dữ liệu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ket-hop-va-bien-oi-nhieu-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Kết hợp và Biến đổi nhiều mảng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ai-so-tuyen-tinh-voi-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Đại số tuyến tính với NumPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Đại số tuyến tính với NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-phep-toan-tren-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Phép toán trên Vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-phep-toan-tren-ma-tran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Phép toán trên Ma trận
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-xac-suat-thong-ke-voi-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Xác suất thống kê với NumPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Xác suất thống kê với NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-cac-ham-tong-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Các hàm tổng hợp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-xac-suat-va-phan-phoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. Xác suất và Phân phối
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Vision
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Vision
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer_vision/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tổng quan về xử lý ảnh và video
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../computer_vision/image_retrieval.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Truy vấn hình ảnh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nlp/text_audio.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tổng quan về xử lý text và audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-gioi-thieu-ve-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Giới thiệu về NumPy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tao-mang-trong-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tạo mảng trong NumPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Tạo mảng trong NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-tu-gia-tri-cho-truoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Từ giá trị cho trước
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mang-ac-biet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Mảng đặc biệt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-mang-ngau-nhien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Mảng ngẫu nhiên
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lap-chi-muc-cat-lat-va-bien-oi-hinh-dang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Lập chỉ mục, Cắt lát và Biến đổi hình dạng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Lập chỉ mục, Cắt lát và Biến đổi hình dạng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-chi-muc-indexing-va-cat-lat-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Chỉ mục (Indexing) và Cắt lát (Slicing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-bien-oi-hinh-dang-reshaping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Biến đổi hình dạng (Reshaping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mat-na-boolean-va-loc-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Mặt nạ Boolean và Lọc dữ liệu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ket-hop-va-bien-oi-nhieu-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Kết hợp và Biến đổi nhiều mảng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-ai-so-tuyen-tinh-voi-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Đại số tuyến tính với NumPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Đại số tuyến tính với NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-phep-toan-tren-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Phép toán trên Vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-phep-toan-tren-ma-tran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Phép toán trên Ma trận
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-xac-suat-thong-ke-voi-numpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Xác suất thống kê với NumPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Xác suất thống kê với NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-cac-ham-tong-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Các hàm tổng hợp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-xac-suat-va-phan-phoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. Xác suất và Phân phối
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tong-hop-kien-thuc-ve-numpy">Tổng hợp Kiến thức về NumPy<a class="headerlink" href="#tong-hop-kien-thuc-ve-numpy" title="Permanent link">&para;</a></h1>
+<h2 id="1-gioi-thieu-ve-numpy">1. Giới thiệu về NumPy<a class="headerlink" href="#1-gioi-thieu-ve-numpy" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>NumPy là thư viện nền tảng cho tính toán số trong Python và là điểm khởi đầu cho hầu hết các thư viện học máy.</p>
+</li>
+<li>
+<p>NumPy xử lý dữ liệu nhanh hơn nhiều lần so với danh sách (list) thuần túy của Python (có thể nhanh hơn tới 50 lần) do lưu trữ dữ liệu trong các khối bộ nhớ liên tục.</p>
+</li>
+<li>
+<p>Đối tượng trung tâm của NumPy là mảng nhiều chiều ndarray. Các thuộc tính quan trọng bao gồm:</p>
+<ul>
+<li>
+<p><code>shape</code>: Kích thước theo từng chiều.</p>
+</li>
+<li>
+<p><code>ndim</code>: Số chiều của mảng.</p>
+</li>
+<li>
+<p><code>size</code>: Tổng số phần tử.</p>
+</li>
+<li>
+<p><code>dtype</code>: Kiểu dữ liệu của các phần tử (mọi phần tử phải cùng kiểu).</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ví dụ:
+<div class="highlight"><pre><span></span><code>import numpy as np
+data = np.array([[1, 6, 7], [8-10]])
+print(data.shape) # (2, 3)
+print(data.ndim)  # 2
+print(data.dtype) # int64
+</code></pre></div></p>
+<h2 id="2-tao-mang-trong-numpy">2. Tạo mảng trong NumPy<a class="headerlink" href="#2-tao-mang-trong-numpy" title="Permanent link">&para;</a></h2>
+<p>Có nhiều cách để khởi tạo một mảng:</p>
+<h3 id="21-tu-gia-tri-cho-truoc">2.1. Từ giá trị cho trước<a class="headerlink" href="#21-tu-gia-tri-cho-truoc" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>np.array()</code>: Tạo mảng từ list Python.</li>
+<li><code>np.arange(start, stop, step)</code>: Tạo dãy số tăng đều tương tự hàm range.</li>
+<li><code>np.linspace(start, stop, num)</code>: Tạo dãy số cách đều với số phần tử xác định.</li>
+</ul>
+<h3 id="22-mang-ac-biet">2.2. Mảng đặc biệt<a class="headerlink" href="#22-mang-ac-biet" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>np.zeros(shape)</code>: Mảng toàn số 0.</li>
+<li><code>np.ones(shape)</code>: Mảng toàn số 1.</li>
+<li><code>np.full(shape, value)</code>: Mảng với giá trị tùy ý.</li>
+</ul>
+<h3 id="23-mang-ngau-nhien">2.3. Mảng ngẫu nhiên<a class="headerlink" href="#23-mang-ngau-nhien" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>np.random.random()</code>: Số thực trong khoảng <code>[0.0, 1.0)</code>.</p>
+</li>
+<li>
+<p><code>np.random.uniform(a, b)</code>: Số thực trong khoảng tùy chỉnh.</p>
+</li>
+<li>
+<p><code>np.random.seed()</code>: Cố định bộ sinh số ngẫu nhiên để kết quả có thể lặp lại.</p>
+</li>
+</ul>
+<p><strong>Ví dụ:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Tạo dãy 5 điểm cách đều từ 0 đến 1</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># [0. 0.25 0.5 0.75 1.]</span>
+</code></pre></div></p>
+<h2 id="3-lap-chi-muc-cat-lat-va-bien-oi-hinh-dang">3. Lập chỉ mục, Cắt lát và Biến đổi hình dạng<a class="headerlink" href="#3-lap-chi-muc-cat-lat-va-bien-oi-hinh-dang" title="Permanent link">&para;</a></h2>
+<h3 id="31-chi-muc-indexing-va-cat-lat-slicing">3.1. Chỉ mục (Indexing) và Cắt lát (Slicing)<a class="headerlink" href="#31-chi-muc-indexing-va-cat-lat-slicing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Hỗ trợ cả chỉ mục xuôi (từ 0) và ngược (từ -1).</p>
+</li>
+<li>
+<p>Cú pháp cắt lát: <code>start:stop:step</code>.</p>
+</li>
+</ul>
+<p><strong>Lưu ý:</strong> Cắt lát thông thường trả về một <strong>khung nhìn (view)</strong>, thay đổi trên view sẽ làm thay đổi mảng gốc.</p>
+<h3 id="32-bien-oi-hinh-dang-reshaping">3.2. Biến đổi hình dạng (Reshaping)<a class="headerlink" href="#32-bien-oi-hinh-dang-reshaping" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>reshape(new_shape)</code>: Thay đổi hình dạng mà không đổi dữ liệu.</li>
+<li><code>flatten()</code>: Làm phẳng mảng nhiều chiều thành mảng 1 chiều.</li>
+<li><code>.T</code>: Chuyển vị ma trận (hàng thành cột và ngược lại).</li>
+</ul>
+<h2 id="4-mat-na-boolean-va-loc-du-lieu">4. Mặt nạ Boolean và Lọc dữ liệu<a class="headerlink" href="#4-mat-na-boolean-va-loc-du-lieu" title="Permanent link">&para;</a></h2>
+<p>Đây là kỹ thuật mạnh mẽ để xử lý dữ liệu theo điều kiện mà không cần dùng vòng lặp.</p>
+<ul>
+<li><strong>Tạo mặt nạ:</strong> Áp dụng các toán tử so sánh (<code>&gt;</code>, <code>&lt;</code>, <code>==</code>,...) lên mảng.</li>
+<li><strong>Lọc dữ liệu:</strong> Truyền mặt nạ vào cặp ngoặc vuông <code>data[mask]</code>.</li>
+<li>Chọn giá trị <code>x</code> nếu điều kiện đúng, ngược lại chọn <code>y</code>: <code>np.where(condition, x, y)</code>.</li>
+</ul>
+<p><strong>Ví dụ:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
+<span class="c1"># Lấy các phần tử &lt;= 7</span>
+<span class="n">filtered</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="p">]</span> <span class="c1"># </span>
+<span class="c1"># Gán lại giá trị theo điều kiện: thay các số lẻ bằng -1</span>
+<span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># [-1 8 -1 4 -1 6]</span>
+</code></pre></div></p>
+<h2 id="5-ket-hop-va-bien-oi-nhieu-mang">5. Kết hợp và Biến đổi nhiều mảng<a class="headerlink" href="#5-ket-hop-va-bien-oi-nhieu-mang" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><code>np.concatenate((a, b), axis)</code>: Ghép mảng theo trục dọc (<code>axis=0</code>) hoặc ngang (<code>axis=1</code>).</p>
+</li>
+<li>
+<p><code>np.vstack()</code> / <code>np.hstack()</code>: Ghép nhanh theo chiều dọc/ngang.</p>
+</li>
+<li>
+<p><code>np.repeat()</code>: Lặp từng phần tử.</p>
+</li>
+<li>
+<p><code>np.tile()</code>: Lặp toàn bộ khối mảng.</p>
+</li>
+</ul>
+<h2 id="6-ai-so-tuyen-tinh-voi-numpy">6. Đại số tuyến tính với NumPy<a class="headerlink" href="#6-ai-so-tuyen-tinh-voi-numpy" title="Permanent link">&para;</a></h2>
+<h3 id="61-phep-toan-tren-vector">6.1. Phép toán trên Vector<a class="headerlink" href="#61-phep-toan-tren-vector" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Độ dài Euclid (Chuẩn L2):</strong> <code>np.linalg.norm(u)</code>.</p>
+</li>
+<li>
+<p><strong>Tích vô hướng (Dot product):</strong> <code>u.dot(v)</code> hoặc dùng toán tử <code>@</code>.</p>
+</li>
+<li>
+<p><strong>Phép nhân Hadamard:</strong> Nhân từng phần tử tương ứng bằng toán tử <code>*</code>.</p>
+</li>
+</ul>
+<h3 id="62-phep-toan-tren-ma-tran">6.2. Phép toán trên Ma trận<a class="headerlink" href="#62-phep-toan-tren-ma-tran" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Nhân ma trận:</strong> <code>A.dot(B)</code> hoặc <code>A @ B</code> (điều kiện: số cột của A phải bằng số hàng của B).</p>
+</li>
+<li>
+<p><strong>Cộng/Trừ/Nhân/Chia vô hướng:</strong> Áp dụng lên từng phần tử của ma trận.</p>
+</li>
+<li>
+<p><strong>Broadcasting:</strong> Cơ chế tự động mở rộng mảng nhỏ để khớp với mảng lớn hơn khi thực hiện phép toán.</p>
+</li>
+</ul>
+<p><strong>Ví dụ nhân ma trận:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">]])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span> 
+<span class="c1"># Kết quả: [[24, 25], [42, 43]]</span>
+</code></pre></div></p>
+<h2 id="7-xac-suat-thong-ke-voi-numpy">7. Xác suất thống kê với NumPy<a class="headerlink" href="#7-xac-suat-thong-ke-voi-numpy" title="Permanent link">&para;</a></h2>
+<h3 id="71-cac-ham-tong-hop">7.1. Các hàm tổng hợp<a class="headerlink" href="#71-cac-ham-tong-hop" title="Permanent link">&para;</a></h3>
+<p>NumPy cung cấp các hàm để rút gọn mảng thành các giá trị đại diện:</p>
+<ul>
+<li>
+<p>Tổng, trung bình, trung vị: <code>np.sum()</code>, <code>np.mean()</code>, <code>np.median()</code>.</p>
+</li>
+<li>
+<p>Phương sai và độ lệch chuẩn: <code>np.var()</code>, <code>np.std()</code>.</p>
+</li>
+<li>
+<p>Phân vị: <code>np.percentile()</code>, <code>np.quantile()</code>.</p>
+</li>
+<li>
+<p>Tính theo trục: Dùng <code>axis=0</code> để tính theo từng cột (cho ra kết quả cho mỗi đặc trưng) hoặc <code>axis=1</code> cho từng hàng.</p>
+</li>
+</ul>
+<h3 id="72-xac-suat-va-phan-phoi">7.2. Xác suất và Phân phối<a class="headerlink" href="#72-xac-suat-va-phan-phoi" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Xác suất thực nghiệm:</strong> Có thể ước tính bằng cách lấy trung bình (<code>np.mean</code>) của một mảng Boolean.</p>
+</li>
+<li>
+<p><strong>Phân phối Gaussian (Chuẩn):</strong> Được đặc trưng bởi trung bình <span class="arithmatex">\(\mu\)</span> và độ lệch chuẩn <span class="arithmatex">\(\sigma\)</span>.</p>
+</li>
+<li>
+<p><strong>Hình dạng phân phối của dữ liệu</strong>: <code>np.histogram()</code>.</p>
+</li>
+<li>
+<p><strong>Z-score (Chuẩn hóa):</strong> Đưa dữ liệu về trung bình bằng 0 và độ lệch chuẩn bằng 1.</p>
+</li>
+</ul>
+<div class="arithmatex">\[ z = \frac{x - \mu}{\sigma}\]</div>
+<p><strong>Ví dụ chuẩn hóa dữ liệu:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Chuẩn hóa z-score bằng broadcasting</span>
+<span class="n">standardized_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

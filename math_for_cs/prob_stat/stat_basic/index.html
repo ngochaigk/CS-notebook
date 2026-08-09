@@ -1,0 +1,2275 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://TEN_GITHUB.github.io/so-tay/math_for_cs/prob_stat/stat_basic/">
+      
+      
+        <link rel="prev" href="../prob_basic/">
+      
+      
+        <link rel="next" href="../bayes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Thống kê cơ bản - Sổ tay của tôi</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#thong-ke-co-ban" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="Sổ tay của tôi" class="md-header__button md-logo" aria-label="Sổ tay của tôi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sổ tay của tôi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Thống kê cơ bản
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang nền tối"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang nền tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang nền sáng"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang nền sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Sổ tay của tôi" class="md-nav__button md-logo" aria-label="Sổ tay của tôi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sổ tay của tôi
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trang chủ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python cơ bản
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python cơ bản
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_co_ban/variable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Biến và kiểu dữ liệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_co_ban/function/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hàm trong Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_co_ban/branching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Câu lệnh rẽ nhánh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_co_ban/loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vòng lặp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_co_ban/data_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cấu trúc dữ liệu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_co_ban/oop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OOP trong Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toán cho CS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Toán cho CS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../softmax.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Softmax và Stable Softmax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vector_matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector và Ma trận
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confidence_interval.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Khoảng tin cậy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xác suất thống kê
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Xác suất thống kê
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prob_basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xác suất cơ bản
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thống kê cơ bản
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thống kê cơ bản
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cac-khai-niem-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các khái niệm cơ bản
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các khái niệm cơ bản">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moi-lien-quan-giua-xac-suat-va-thong-ke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mối liên quan giữa xác suất và thống kê:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tong-the-va-mau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tổng thể và mẫu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mo-ta-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mô tả dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mô tả dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xu-huong-tap-trung-central-tendency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xu hướng tập trung (Central Tendency)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xu hướng tập trung (Central Tendency)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ky-vong-gia-tri-trung-binh-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kỳ vọng/ giá trị trung bình (Mean)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trung-vi-median" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trung vị (Median)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yeu-vi-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yếu vị (Mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-phan-tan-du-lieu-dispersion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Độ phân tán dữ liệu (Dispersion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Độ phân tán dữ liệu (Dispersion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phuong-sai-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phương sai (Variance):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-lech-chuan-standard-deviation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Độ lệch chuẩn (Standard Deviation):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-tri-cua-du-lieu-percentile-va-quantile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí của dữ liệu (Percentile và Quantile)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-phoi-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân phối dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phân phối dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-dang-phan-phoi-thuong-gap-common-distribution-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các dạng phân phối thường gặp (Common Distribution Shapes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phan-phoi-gaussian-phan-phoi-chuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân phối Gaussian (phân phối chuẩn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#histogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histogram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-he-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan hệ dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quan hệ dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hiep-phuong-sai-covariance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hiệp phương sai (Covariance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#he-so-tuong-quan-correlation-coefficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hệ số tương quan (Correlation Coefficient)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bayes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Định lý Bayes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gaussian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phân phối Gauss
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../confidence_interval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Khoảng tin cậy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../softmax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hàm softmax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thuật toán
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Thuật toán
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/kmeans.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K-Means
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithms/k_nearest_neighbors.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K-Nearest Neighbors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thư viện trong Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Thư viện trong Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_library/numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python_library/pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Vision
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Vision
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_vision/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tổng quan về xử lý ảnh và video
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_vision/image_retrieval.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Truy vấn hình ảnh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NLP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../nlp/text_audio.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tổng quan về xử lý text và audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cac-khai-niem-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các khái niệm cơ bản
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các khái niệm cơ bản">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moi-lien-quan-giua-xac-suat-va-thong-ke" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mối liên quan giữa xác suất và thống kê:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tong-the-va-mau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tổng thể và mẫu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mo-ta-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mô tả dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mô tả dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xu-huong-tap-trung-central-tendency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xu hướng tập trung (Central Tendency)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Xu hướng tập trung (Central Tendency)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ky-vong-gia-tri-trung-binh-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kỳ vọng/ giá trị trung bình (Mean)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trung-vi-median" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trung vị (Median)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yeu-vi-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yếu vị (Mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-phan-tan-du-lieu-dispersion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Độ phân tán dữ liệu (Dispersion)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Độ phân tán dữ liệu (Dispersion)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phuong-sai-variance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phương sai (Variance):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-lech-chuan-standard-deviation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Độ lệch chuẩn (Standard Deviation):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-tri-cua-du-lieu-percentile-va-quantile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí của dữ liệu (Percentile và Quantile)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-phoi-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân phối dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phân phối dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-dang-phan-phoi-thuong-gap-common-distribution-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các dạng phân phối thường gặp (Common Distribution Shapes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phan-phoi-gaussian-phan-phoi-chuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phân phối Gaussian (phân phối chuẩn)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#histogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Histogram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-he-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan hệ dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quan hệ dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hiep-phuong-sai-covariance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hiệp phương sai (Covariance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#he-so-tuong-quan-correlation-coefficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hệ số tương quan (Correlation Coefficient)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="thong-ke-co-ban">Thống kê cơ bản<a class="headerlink" href="#thong-ke-co-ban" title="Permanent link">&para;</a></h1>
+<h2 id="cac-khai-niem-co-ban">Các khái niệm cơ bản<a class="headerlink" href="#cac-khai-niem-co-ban" title="Permanent link">&para;</a></h2>
+<h3 id="moi-lien-quan-giua-xac-suat-va-thong-ke">Mối liên quan giữa xác suất và thống kê:<a class="headerlink" href="#moi-lien-quan-giua-xac-suat-va-thong-ke" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Xác suất</strong>: đi từ mô hình → dự đoán dữ liệu.</p>
+</li>
+<li>
+<p><strong>Thống kê</strong>: đi từ dữ liệu → suy luận về mô hình.</p>
+</li>
+</ul>
+<p><img alt="alt text" src="../prob_stats.png" /></p>
+<blockquote>
+<p>Thống kê biến quan sát thô thành thông tin có thể diễn giải được.</p>
+</blockquote>
+<h3 id="tong-the-va-mau">Tổng thể và mẫu<a class="headerlink" href="#tong-the-va-mau" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Định nghĩa</th>
+<th>Ví dụ Iris</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Population</strong></td>
+<td>Toàn bộ tập đối tượng/quan sát mà ta quan tâm</td>
+<td>Tất cả hoa Iris trên thực tế</td>
+</tr>
+<tr>
+<td><strong>Sample</strong></td>
+<td>Tập con của tổng thể mà ta <strong>thực sự quan sát được</strong></td>
+<td>150 bông hoa trong dataset</td>
+</tr>
+</tbody>
+</table>
+<p>=&gt; Population ⊃ Sample</p>
+<h2 id="mo-ta-du-lieu">Mô tả dữ liệu<a class="headerlink" href="#mo-ta-du-lieu" title="Permanent link">&para;</a></h2>
+<p>Ba câu hỏi khi mô tả dữ liệu</p>
+<table>
+<thead>
+<tr>
+<th>Câu hỏi</th>
+<th>Đại lượng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Trung tâm ở đâu?</td>
+<td><strong>Mean</strong> (trung bình), <strong>Median</strong> (trung vị)</td>
+</tr>
+<tr>
+<td>2. Dữ liệu phân tán ra sao?</td>
+<td><strong>Variance</strong> (phương sai), <strong>Standard deviation</strong> (độ lệch chuẩn)</td>
+</tr>
+<tr>
+<td>3. Một giá trị nằm ở đâu so với phần còn lại?</td>
+<td><strong>Percentile</strong>, <strong>Quantile</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="xu-huong-tap-trung-central-tendency">Xu hướng tập trung (Central Tendency)<a class="headerlink" href="#xu-huong-tap-trung-central-tendency" title="Permanent link">&para;</a></h3>
+<p>Các đại lượng này mô tả điểm trung tâm hoặc giá trị đại diện cho toàn bộ tập dữ liệu.</p>
+<h4 id="ky-vong-gia-tri-trung-binh-mean">Kỳ vọng/ giá trị trung bình (Mean)<a class="headerlink" href="#ky-vong-gia-tri-trung-binh-mean" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Khái niệm</strong>: Tổng tất cả các giá trị chia cho tổng số lượng phần tử.</p>
+</li>
+<li>
+<p><strong>Công thức</strong>:
+  $<span class="arithmatex">\(\mu = \frac{1}{N}\sum_{i=1}^{N} x_i\)</span>$</p>
+</li>
+<li><strong>Đặc điểm</strong>: Nhạy cảm với giá trị ngoại lệ (outliers).</li>
+</ul>
+<h4 id="trung-vi-median">Trung vị (Median)<a class="headerlink" href="#trung-vi-median" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Khái niệm</strong>: Giá trị nằm ở chính giữa khi dãy số đã được sắp xếp theo thứ tự tăng/giảm.</p>
+</li>
+<li>
+<p><strong>Đặc điểm</strong>: Ít bị ảnh hưởng bởi outlier.</p>
+</li>
+</ul>
+<p><strong>Lưu ý</strong>: Nếu <code>mean</code> và <code>median</code> lệch nhau nhiều → dữ liệu <strong>lệch (skewed)</strong> hoặc <strong>có outlier</strong>.</p>
+<h4 id="yeu-vi-mode">Yếu vị (Mode)<a class="headerlink" href="#yeu-vi-mode" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Khái niệm</strong>: Giá trị có tần suất xuất hiện nhiều nhất trong tập dữ liệu.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>  <span class="c1"># 100 là ngoại lệ (outlier)</span>
+
+<span class="n">mean_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>            <span class="c1"># Kết quả: 18.67</span>
+<span class="n">median_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>        <span class="c1"># Kết quả: 2.5</span>
+<span class="n">mode_val</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span>    <span class="c1"># Kết quả: 2</span>
+</code></pre></div>
+<h3 id="o-phan-tan-du-lieu-dispersion">Độ phân tán dữ liệu (Dispersion)<a class="headerlink" href="#o-phan-tan-du-lieu-dispersion" title="Permanent link">&para;</a></h3>
+<p>Đo lường mức độ biến động hoặc sự lan rộng của các điểm dữ liệu xung quanh giá trị trung bình.</p>
+<h4 id="phuong-sai-variance">Phương sai (Variance):<a class="headerlink" href="#phuong-sai-variance" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Khái niệm: Bình phương độ chênh lệch trung bình giữa từng phần tử và giá trị trung bình.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Phương sai tổng thể</strong></th>
+<th><strong>Phương sai mẫu</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Mô tả dữ liệu quan sát được</td>
+<td>Ước lượng cho tổng thể lớn hơn</td>
+</tr>
+<tr>
+<td>Code</td>
+<td><code>np.var(x, ddof=0)</code> / <code>np.std(x, ddof=0)</code></td>
+<td><code>np.var(x, ddof=1)</code> / <code>np.std(x, ddof=1)</code></td>
+</tr>
+<tr>
+<td>Công thức</td>
+<td>$ \sigma^2 = \frac{\sum(x_i - \mu)^2}{N} $</td>
+<td>$ s^2 = \frac{\sum(x_i - x)^2}{N-1} $</td>
+</tr>
+<tr>
+<td>Tên gọi</td>
+<td>Population variance</td>
+<td>Sample variance (hiệu chỉnh Bessel)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="o-lech-chuan-standard-deviation">Độ lệch chuẩn (Standard Deviation):<a class="headerlink" href="#o-lech-chuan-standard-deviation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Khái niệm: Căn bậc hai của phương sai, đưa đại lượng về cùng đơn vị đo với dữ liệu gốc.</li>
+</ul>
+<div class="arithmatex">\[\sigma = \sqrt{Var(X)}\]</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Phương sai và độ lệch chuẩn của quần thể (ddof=0)</span>
+<span class="n">var_pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">std_pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Phương sai và độ lệch chuẩn của mẫu (ddof=1 - Hiệu chỉnh Bessel)</span>
+<span class="n">var_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">std_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="vi-tri-cua-du-lieu-percentile-va-quantile">Vị trí của dữ liệu (Percentile và Quantile)<a class="headerlink" href="#vi-tri-cua-du-lieu-percentile-va-quantile" title="Permanent link">&para;</a></h3>
+<p><strong>Định nghĩa:</strong> <em>Percentile thứ p</em> là giá trị mà khoảng <strong>p%</strong> số quan sát nằm ở dưới nó.</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">])</span>
+
+<span class="n">percentiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+<span class="n">quantiles</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Percentiles:&quot;</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quantiles:&quot;</span><span class="p">,</span> <span class="n">quantiles</span><span class="p">)</span>
+<span class="c1"># Percentiles: [2.6 4.6 6.2]</span>
+<span class="c1"># Quantiles:   [2.6 4.6 6.2]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Q1 (25%) = 2.6      Q2 (50%) = 4.6     Q3 (75%) = 6.2
+      │                    │                 │
+├──●──┼●──●───●────┼───●───┼──●───●──┼──●───┼─●────●──┤
+0           2           4           6           8      10
+</code></pre></div>
+<p>Diễn giải: <em>Percentile 75 = 6.2 cm ⇒ khoảng 75% quan sát có giá trị ≤ 6.2 cm.</em></p>
+<table>
+<thead>
+<tr>
+<th>Ký hiệu</th>
+<th>Tên</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1</td>
+<td>Percentile 25</td>
+<td>25% dữ liệu nằm dưới</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>Percentile 50</td>
+<td>= <strong>Median</strong></td>
+</tr>
+<tr>
+<td>Q3</td>
+<td>Percentile 75</td>
+<td>75% dữ liệu nằm dưới</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><code>percentile</code> nhận thang <strong>0–100</strong>, <code>quantile</code> nhận thang <strong>0–1</strong> → cho kết quả <strong>giống nhau</strong>.</p>
+</li>
+<li>
+<p><strong>IQR (Interquartile Range) = Q3 − Q1</strong> → thước đo độ phân tán bền vững với outlier.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">q1</span><span class="p">,</span> <span class="n">q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+<span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
+<span class="n">lower</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">,</span> <span class="n">q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span>     <span class="c1"># quy tắc phát hiện outlier</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iqr</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="phan-phoi-du-lieu">Phân phối dữ liệu<a class="headerlink" href="#phan-phoi-du-lieu" title="Permanent link">&para;</a></h2>
+<h3 id="cac-dang-phan-phoi-thuong-gap-common-distribution-shapes">Các dạng phân phối thường gặp (Common Distribution Shapes)<a class="headerlink" href="#cac-dang-phan-phoi-thuong-gap-common-distribution-shapes" title="Permanent link">&para;</a></h3>
+<p><img alt="Các dạng phân phối" src="../distribution_shape.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Hình dạng</th>
+<th>Đặc điểm</th>
+<th>Gợi ý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Symmetric</strong> (đối xứng)</td>
+<td>Cân đối hai bên đỉnh</td>
+<td>mean ≈ median</td>
+</tr>
+<tr>
+<td><strong>Right-skewed</strong> (lệch phải)</td>
+<td>Đuôi dài về bên phải</td>
+<td>mean &gt; median (thu nhập, thời gian chờ)</td>
+</tr>
+<tr>
+<td><strong>Left-skewed</strong> (lệch trái)</td>
+<td>Đuôi dài về bên trái</td>
+<td>mean &lt; median</td>
+</tr>
+<tr>
+<td><strong>Bimodal</strong> (hai đỉnh)</td>
+<td>Hai vùng tập trung</td>
+<td>Có thể do <strong>trộn nhiều nhóm con</strong> (nhiều lớp)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>Hình dạng phân phối có thể cho thấy độ lệch, sự tồn tại của nhóm con, hoặc cấu trúc bất thường.</em></p>
+</blockquote>
+<h3 id="phan-phoi-gaussian-phan-phoi-chuan">Phân phối Gaussian (phân phối chuẩn)<a class="headerlink" href="#phan-phoi-gaussian-phan-phoi-chuan" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[X \sim \mathcal{N}(\mu, \sigma^2)\]</div>
+<div class="arithmatex">\[f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\]</div>
+<p><strong>Tính chất:</strong>
+- Đối xứng quanh mean
+- Mật độ cao nhất gần trung tâm
+- Giá trị ở xa ít gặp hơn
+- Được mô tả hoàn toàn bởi <strong>μ</strong> và <strong>σ</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tham số</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>μ</strong></td>
+<td>Điều khiển <strong>vị trí</strong> (location)</td>
+</tr>
+<tr>
+<td><strong>σ</strong></td>
+<td>Điều khiển <strong>độ rộng</strong> (spread)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="histogram">Histogram<a class="headerlink" href="#histogram" title="Permanent link">&para;</a></h3>
+<p>Histogram thể hiện phân bố dữ liệu bằng cách chia khoảng giá trị thành các bins. Việc lựa chọn số lượng bins ảnh hưởng trực tiếp đến khả năng quan sát phân phối:</p>
+<ul>
+<li>
+<p><strong>Quá ít bins (Coarse)</strong>: Mất thông tin chi tiết của phân phối.</p>
+</li>
+<li>
+<p><strong>Quá nhiều bins (Noisy)</strong>: Biểu đồ bị nhiễu, khó thấy xu hướng tổng thể.</p>
+</li>
+<li>
+<p><strong>Cân bằng (Balanced)</strong>: Phản ánh trung thực dạng phân phối.</p>
+</li>
+</ul>
+<p><img alt="histogram" src="../histogram.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">counts</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="quan-he-du-lieu">Quan hệ dữ liệu<a class="headerlink" href="#quan-he-du-lieu" title="Permanent link">&para;</a></h2>
+<p>Để mô tả mối quan hệ tuyến tính giữa hai biến ngẫu nhiên X và Y, ta có các chỉ số:</p>
+<h4 id="hiep-phuong-sai-covariance">Hiệp phương sai (Covariance)<a class="headerlink" href="#hiep-phuong-sai-covariance" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Khái niệm</strong>: Cho biết hướng biến thiên cùng chiều hay ngược chiều của X và Y.</p>
+</li>
+<li>
+<p><strong>Công thức</strong>:</p>
+</li>
+</ul>
+<div class="arithmatex">\[Cov(X, Y) = \frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})(y_i - \bar{y})\]</div>
+<table>
+<thead>
+<tr>
+<th>Giá trị</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cov &gt; 0</strong></td>
+<td>Quan hệ đồng biến</td>
+</tr>
+<tr>
+<td><strong>Cov &lt; 0</strong></td>
+<td>Quan hệ nghịch biến</td>
+</tr>
+<tr>
+<td><strong>Cov ≈ 0</strong></td>
+<td>Không có quan hệ tuyến tính rõ ràng</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Vấn đề về thang đo của covariance</li>
+</ul>
+<div class="arithmatex">\[X_{cm} = 100 \cdot X_m \quad \Rightarrow \quad Cov(X_{cm}, Y) = 100 \cdot Cov(X_m, Y)\]</div>
+<table>
+<thead>
+<tr>
+<th>Chiều cao tính bằng mét</th>
+<th>Chiều cao tính bằng centimet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hình dạng scatter <strong>giống hệt nhau</strong></td>
+<td>Giá trị covariance <strong>khác nhau 100 lần</strong></td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ Đổi đơn vị làm thay đổi độ lớn của covariance, dù mẫu hình không hề thay đổi ⇒ Không thể dùng độ lớn covariance để so sánh các cặp đặc trưng khác đơn vị. </p>
+<p>=&gt; Cần một đại lượng <em>không đơn vị</em> → <strong>Correlation</strong>.</p>
+<h4 id="he-so-tuong-quan-correlation-coefficient">Hệ số tương quan (Correlation Coefficient)<a class="headerlink" href="#he-so-tuong-quan-correlation-coefficient" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Định nghĩa:</strong> Hệ số tương quan chuẩn hóa hiệp phương sai bằng độ lệch chuẩn của cả hai biến.</li>
+</ul>
+<div class="arithmatex">\[r_{XY} = \frac{Cov(X, Y)}{\sigma_X \sigma_Y}, \qquad -1 \le r_{XY} \le 1\]</div>
+<p>=&gt; Chuẩn hóa hiệp phương sai về khoảng [−1,1] để đo độ mạnh và hướng của mối quan hệ tuyến tính.</p>
+<ul>
+<li>
+<p><strong>Ý nghĩa</strong>:</p>
+<ul>
+<li>
+<p>r\=1: Tương quan thuận tuyệt đối.</p>
+</li>
+<li>
+<p>r\=−1: Tương quan nghịch tuyệt đối.</p>
+</li>
+<li>
+<p>r\=0: Không có tương quan tuyến tính.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># Tính ma trận hiệp phương sai</span>
+<span class="n">cov_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Tính ma trận hệ số tương quan</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">r_xy</span> <span class="o">=</span> <span class="n">corr_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Output: 1.0</span>
+</code></pre></div>
+<blockquote>
+<p>Tương quan không phải là nhân quả (correlation ≠ causation).</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.top", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
